@@ -29,8 +29,8 @@ llm = init_chat_model(
 
 # 配置持久化存储
 backend = FilesystemBackend(
-    root_dir=str(Path(__file__).parent),
-    virtual_mode=True,
+    root_dir=str(Path(__file__).parent), # 指定 Agent 读写文件的基础文件夹。
+    virtual_mode=True,  # 路径锚定 绝对路径会被解释为相对于 root_dir 的路径 阻止越界 拦截指向 root_dir 外部的路径。
 )
 
 # 涉及I/O操作 异步处理
